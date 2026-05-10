@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midrar | Website Content Analysis Report 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --midrar-deep:    #0A2E1F;
+    --midrar-forest:  #144D32;
+    --midrar-green:   #1E6E45;
+    --midrar-mid:     #2A9161;
+    --midrar-light:   #3DB87C;
+    --midrar-gold:    #C9A84C;
+    --midrar-gold-lt: #E8C97A;
+    --midrar-cream:   #F7F3EA;
+    --midrar-paper:   #FDFBF6;
+    --midrar-white:   #FFFFFF;
+    --midrar-text:    #1A1A1A;
+    --midrar-muted:   #5A6672;
+    --midrar-border:  #D8E8DF;
+    --midrar-warn:    #C0392B;
+    --midrar-warn-lt: #FDF0EE;
+    --midrar-ok:      #1E6E45;
+    --midrar-ok-lt:   #EAF5EE;
+
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body:    'DM Sans', system-ui, sans-serif;
+    --font-mono:    'DM Mono', monospace;
+    --radius:       6px;
+    --shadow-sm:    0 1px 4px rgba(10,46,31,.08);
+    --shadow-md:    0 4px 20px rgba(10,46,31,.12);
+    --shadow-lg:    0 12px 48px rgba(10,46,31,.16);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--midrar-paper);
+    color: var(--midrar-text);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  .sidenav {
+    position: fixed; top: 0; left: 0;
+    width: 240px; height: 100vh;
+    background: var(--midrar-deep);
+    padding: 32px 0;
+    overflow-y: auto;
+    z-index: 100;
+    display: flex; flex-direction: column;
+  }
+  .sidenav-logo {
+    padding: 0 24px 28px;
+    border-bottom: 1px solid rgba(201,168,76,.25);
+    margin-bottom: 20px;
+  }
+  .sidenav-logo .brand { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--midrar-gold); letter-spacing: .5px; }
+  .sidenav-logo .sub { font-size: 10px; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: 2px; margin-top: 2px; }
+
+  .sidenav a {
+    display: block;
+    padding: 9px 24px;
+    color: rgba(255,255,255,.6);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .3px;
+    transition: all .2s;
+    border-left: 3px solid transparent;
+  }
+  .sidenav a:hover, .sidenav a.active {
+    color: var(--midrar-gold-lt);
+    background: rgba(201,168,76,.08);
+    border-left-color: var(--midrar-gold);
+  }
+  .sidenav .nav-section {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 2.5px;
+    color: rgba(255,255,255,.25); padding: 20px 24px 6px; font-weight: 600;
+  }
+
+  /* ── MAIN ── */
+  .main { margin-left: 240px; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--midrar-deep);
+    padding: 80px 64px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 480px; height: 100%;
+    background: radial-gradient(ellipse at 80% 50%, rgba(30,110,69,.35) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -1px; left: 0; right: 0;
+    height: 60px;
+    background: var(--midrar-paper);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,.12);
+    border: 1px solid rgba(201,168,76,.3);
+    padding: 6px 14px; border-radius: 40px;
+    font-size: 11px; color: var(--midrar-gold-lt);
+    text-transform: uppercase; letter-spacing: 2px; font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: var(--font-display); font-size: 48px; font-weight: 900;
+    color: var(--midrar-white); line-height: 1.15; max-width: 600px;
+    margin-bottom: 20px;
+  }
+  .hero h1 span { color: var(--midrar-gold); }
+  .hero-desc {
+    color: rgba(255,255,255,.65); font-size: 16px; max-width: 520px;
+    line-height: 1.75; margin-bottom: 40px;
+  }
+  .hero-meta {
+    display: flex; gap: 40px; flex-wrap: wrap;
+  }
+  .hero-meta-item .label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,.35); }
+  .hero-meta-item .value { font-size: 14px; color: var(--midrar-gold-lt); font-weight: 600; margin-top: 2px; }
+
+  /* ── PAGE SECTIONS ── */
+  .section {
+    padding: 64px;
+    border-bottom: 1px solid var(--midrar-border);
+  }
+  .section:last-child { border-bottom: none; }
+  .section-alt { background: var(--midrar-cream); }
+
+  .section-eyebrow {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px;
+  }
+  .section-eyebrow .num {
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--midrar-gold); font-weight: 500;
+    background: rgba(201,168,76,.12);
+    padding: 2px 8px; border-radius: 3px;
+  }
+  .section-eyebrow .tag {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 2.5px;
+    color: var(--midrar-muted); font-weight: 600;
+  }
+  .section-title {
+    font-family: var(--font-display); font-size: 32px; font-weight: 700;
+    color: var(--midrar-deep); margin-bottom: 8px; line-height: 1.2;
+  }
+  .section-sub {
+    color: var(--midrar-muted); font-size: 15px; max-width: 580px;
+    margin-bottom: 40px; line-height: 1.65;
+  }
+
+  /* ── EXEC SUMMARY SCORES ── */
+  .score-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px; margin-bottom: 40px;
+  }
+  .score-card {
+    background: var(--midrar-white);
+    border: 1px solid var(--midrar-border);
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    position: relative; overflow: hidden;
+  }
+  .score-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  }
+  .score-card.green::before { background: var(--midrar-light); }
+  .score-card.gold::before  { background: var(--midrar-gold); }
+  .score-card.red::before   { background: var(--midrar-warn); }
+  .score-card.amber::before { background: #E67E22; }
+
+  .score-num {
+    font-family: var(--font-display); font-size: 40px; font-weight: 900;
+    line-height: 1; margin-bottom: 4px;
+  }
+  .score-card.green .score-num { color: var(--midrar-green); }
+  .score-card.gold  .score-num { color: var(--midrar-gold); }
+  .score-card.red   .score-num { color: var(--midrar-warn); }
+  .score-card.amber .score-num { color: #E67E22; }
+  .score-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--midrar-muted); font-weight: 600; }
+
+  .exec-findings {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  .finding-block {
+    background: var(--midrar-white);
+    border: 1px solid var(--midrar-border);
+    border-radius: var(--radius);
+    padding: 24px; box-shadow: var(--shadow-sm);
+  }
+  .finding-block h4 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px;
+    font-weight: 700; margin-bottom: 14px;
+  }
+  .finding-block.strength h4 { color: var(--midrar-green); }
+  .finding-block.weakness h4 { color: var(--midrar-warn); }
+  .finding-block.opportunity h4 { color: var(--midrar-gold); }
+  .finding-block.risk h4 { color: #E67E22; }
+  .finding-block ul { list-style: none; }
+  .finding-block ul li {
+    font-size: 13.5px; color: var(--midrar-text); padding: 5px 0;
+    border-bottom: 1px solid var(--midrar-border); display: flex; gap: 8px;
+  }
+  .finding-block ul li:last-child { border-bottom: none; }
+  .finding-block ul li::before { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+  .strength li::before   { content: '✓'; color: var(--midrar-green); }
+  .weakness li::before   { content: '✗'; color: var(--midrar-warn); }
+  .opportunity li::before{ content: '→'; color: var(--midrar-gold); }
+  .risk li::before       { content: '⚠'; color: #E67E22; }
+
+  /* ── PERSONA CARDS ── */
+  .persona-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .persona-card {
+    background: var(--midrar-white);
+    border: 1px solid var(--midrar-border);
+    border-radius: var(--radius);
+    overflow: hidden; box-shadow: var(--shadow-sm);
+  }
+  .persona-header {
+    padding: 20px 24px;
+    background: var(--midrar-forest);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .persona-icon {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(201,168,76,.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .persona-name { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--midrar-white); }
+  .persona-role { font-size: 11px; color: rgba(255,255,255,.55); text-transform: uppercase; letter-spacing: 1.5px; }
+  .persona-body { padding: 24px; }
+  .persona-row { margin-bottom: 16px; }
+  .persona-row label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--midrar-muted); font-weight: 700; display: block; margin-bottom: 5px; }
+  .persona-row p { font-size: 13.5px; color: var(--midrar-text); line-height: 1.6; }
+  .persona-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 5px; }
+  .persona-tag {
+    font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 500;
+    background: var(--midrar-ok-lt); color: var(--midrar-green); border: 1px solid rgba(30,110,69,.2);
+  }
+  .persona-tag.pain {
+    background: var(--midrar-warn-lt); color: var(--midrar-warn); border-color: rgba(192,57,43,.2);
+  }
+  .persona-tag.gold {
+    background: rgba(201,168,76,.1); color: #8B6914; border-color: rgba(201,168,76,.3);
+  }
+
+  /* ── CONTENT TABLE / AUDIT ── */
+  .audit-table { width: 100%; border-collapse: collapse; }
+  .audit-table th {
+    text-align: left; padding: 12px 16px;
+    background: var(--midrar-forest); color: var(--midrar-gold-lt);
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600;
+  }
+  .audit-table th:first-child { border-radius: 6px 0 0 0; }
+  .audit-table th:last-child  { border-radius: 0 6px 0 0; }
+  .audit-table td {
+    padding: 12px 16px; border-bottom: 1px solid var(--midrar-border);
+    font-size: 13.5px; vertical-align: top;
+  }
+  .audit-table tr:hover td { background: rgba(30,110,69,.03); }
+  .rating {
+    display: inline-block; padding: 3px 10px; border-radius: 20px;
+    font-size: 11px; font-weight: 600; letter-spacing: .5px;
+  }
+  .rating.good    { background: var(--midrar-ok-lt);   color: var(--midrar-green); }
+  .rating.fair    { background: rgba(201,168,76,.12);  color: #8B6914; }
+  .rating.poor    { background: var(--midrar-warn-lt); color: var(--midrar-warn); }
+  .rating.missing { background: #F4F5F7; color: var(--midrar-muted); }
+
+  /* ── SEO BLOCKS ── */
+  .seo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+  .seo-card {
+    background: var(--midrar-white); border: 1px solid var(--midrar-border);
+    border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow-sm);
+  }
+  .seo-card h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--midrar-muted); margin-bottom: 10px; font-weight: 700; }
+  .seo-card .seo-val { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--midrar-deep); }
+  .seo-card .seo-note { font-size: 12px; color: var(--midrar-muted); margin-top: 4px; }
+
+  .keyword-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+  .keyword-table th { background: var(--midrar-cream); padding: 10px 14px; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--midrar-muted); font-weight: 700; }
+  .keyword-table td { padding: 10px 14px; border-bottom: 1px solid var(--midrar-border); font-size: 13px; }
+  .keyword-table td:nth-child(3), .keyword-table td:nth-child(4) { text-align: center; }
+  .vol-bar { display: inline-block; height: 6px; border-radius: 3px; background: var(--midrar-light); vertical-align: middle; margin-right: 6px; }
+
+  /* ── JOURNEY MAP ── */
+  .journey-stages { display: flex; gap: 0; margin-bottom: 32px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); }
+  .journey-stage { flex: 1; padding: 20px 16px; text-align: center; }
+  .journey-stage:nth-child(1) { background: var(--midrar-deep); }
+  .journey-stage:nth-child(2) { background: var(--midrar-forest); }
+  .journey-stage:nth-child(3) { background: var(--midrar-green); }
+  .journey-stage:nth-child(4) { background: var(--midrar-mid); }
+  .journey-stage:nth-child(5) { background: var(--midrar-light); }
+  .journey-stage .stage-name { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: rgba(255,255,255,.7); margin-bottom: 6px; }
+  .journey-stage .stage-icon { font-size: 26px; margin-bottom: 6px; display: block; }
+  .journey-stage .stage-action { font-size: 12px; color: rgba(255,255,255,.9); font-weight: 500; }
+
+  .journey-detail {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 24px;
+  }
+  .jd-col h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--midrar-muted); font-weight: 700; margin-bottom: 10px; }
+  .jd-col ul { list-style: none; }
+  .jd-col ul li { font-size: 12.5px; color: var(--midrar-text); padding: 4px 0; border-bottom: 1px dashed var(--midrar-border); }
+  .jd-col ul li:last-child { border-bottom: none; }
+  .friction {
+    background: var(--midrar-warn-lt);
+    border: 1px solid rgba(192,57,43,.2);
+    border-radius: var(--radius); padding: 14px;
+    margin-top: 12px;
+  }
+  .friction h5 { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--midrar-warn); font-weight: 700; margin-bottom: 6px; }
+  .friction p { font-size: 12px; color: #7B3428; line-height: 1.5; }
+
+  /* ── STRENGTHS / WEAKNESSES ── */
+  .sw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .sw-block { background: var(--midrar-white); border: 1px solid var(--midrar-border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); }
+  .sw-header { padding: 16px 24px; display: flex; align-items: center; gap: 10px; }
+  .sw-block.s .sw-header { background: var(--midrar-ok-lt); border-bottom: 2px solid var(--midrar-light); }
+  .sw-block.w .sw-header { background: var(--midrar-warn-lt); border-bottom: 2px solid var(--midrar-warn); }
+  .sw-header h3 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
+  .sw-block.s .sw-header h3 { color: var(--midrar-green); }
+  .sw-block.w .sw-header h3 { color: var(--midrar-warn); }
+  .sw-body { padding: 20px 24px; }
+  .sw-item { padding: 12px 0; border-bottom: 1px solid var(--midrar-border); }
+  .sw-item:last-child { border-bottom: none; }
+  .sw-item h5 { font-size: 13px; font-weight: 600; color: var(--midrar-deep); margin-bottom: 4px; }
+  .sw-item p { font-size: 13px; color: var(--midrar-muted); line-height: 1.55; }
+
+  /* ── MESSAGING / POSITIONING ── */
+  .comp-table { width: 100%; border-collapse: collapse; }
+  .comp-table th { background: var(--midrar-deep); color: var(--midrar-gold-lt); padding: 12px 16px; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; text-align: left; }
+  .comp-table td { padding: 12px 16px; border-bottom: 1px solid var(--midrar-border); font-size: 13px; vertical-align: top; }
+  .comp-table tr.midrar-row td { background: rgba(30,110,69,.04); font-weight: 500; }
+  .comp-table td:first-child { font-weight: 600; color: var(--midrar-forest); }
+
+  /* ── TRUST SIGNALS ── */
+  .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .trust-card {
+    background: var(--midrar-white); border: 1px solid var(--midrar-border);
+    border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow-sm);
+  }
+  .trust-card .t-icon { font-size: 28px; margin-bottom: 10px; }
+  .trust-card h4 { font-size: 13px; font-weight: 700; color: var(--midrar-deep); margin-bottom: 6px; }
+  .trust-card p { font-size: 12.5px; color: var(--midrar-muted); line-height: 1.6; }
+  .trust-status { display: inline-block; margin-top: 10px; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .trust-status.present { background: var(--midrar-ok-lt); color: var(--midrar-green); }
+  .trust-status.partial { background: rgba(201,168,76,.12); color: #8B6914; }
+  .trust-status.missing { background: var(--midrar-warn-lt); color: var(--midrar-warn); }
+
+  /* ── RECOMMENDATIONS ── */
+  .recs-list { list-style: none; }
+  .rec-item {
+    background: var(--midrar-white); border: 1px solid var(--midrar-border);
+    border-radius: var(--radius); padding: 20px 24px; margin-bottom: 14px;
+    box-shadow: var(--shadow-sm); display: flex; gap: 20px; align-items: flex-start;
+  }
+  .rec-num {
+    font-family: var(--font-mono); font-size: 20px; font-weight: 700;
+    color: var(--midrar-gold); flex-shrink: 0; min-width: 36px;
+  }
+  .rec-content h4 { font-size: 14px; font-weight: 700; color: var(--midrar-deep); margin-bottom: 5px; }
+  .rec-content p { font-size: 13.5px; color: var(--midrar-muted); line-height: 1.6; }
+  .rec-meta { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+  .rec-tag { font-size: 11px; padding: 2px 10px; border-radius: 20px; font-weight: 600; }
+  .rec-tag.effort-low  { background: var(--midrar-ok-lt); color: var(--midrar-green); }
+  .rec-tag.effort-med  { background: rgba(201,168,76,.12); color: #8B6914; }
+  .rec-tag.effort-high { background: var(--midrar-warn-lt); color: var(--midrar-warn); }
+  .rec-tag.impact-high { background: var(--midrar-deep); color: var(--midrar-gold-lt); }
+
+  /* ── PRIORITY MATRIX ── */
+  .matrix-wrap {
+    position: relative; width: 100%; max-width: 680px; margin: 0 auto 32px;
+  }
+  .matrix-grid {
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+    gap: 0; border: 2px solid var(--midrar-border); border-radius: var(--radius);
+    overflow: hidden; height: 400px;
+  }
+  .matrix-cell {
+    padding: 20px; position: relative; overflow: hidden;
+  }
+  .matrix-cell:nth-child(1) { background: rgba(30,110,69,.07); border-right: 1px solid var(--midrar-border); border-bottom: 1px solid var(--midrar-border); }
+  .matrix-cell:nth-child(2) { background: rgba(30,110,69,.15); border-bottom: 1px solid var(--midrar-border); }
+  .matrix-cell:nth-child(3) { background: rgba(245,245,245,.6); border-right: 1px solid var(--midrar-border); }
+  .matrix-cell:nth-child(4) { background: rgba(192,57,43,.05); }
+  .matrix-cell-label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 12px; }
+  .matrix-cell:nth-child(1) .matrix-cell-label { color: var(--midrar-green); }
+  .matrix-cell:nth-child(2) .matrix-cell-label { color: var(--midrar-deep); }
+  .matrix-cell:nth-child(3) .matrix-cell-label { color: var(--midrar-muted); }
+  .matrix-cell:nth-child(4) .matrix-cell-label { color: var(--midrar-warn); }
+  .matrix-dot {
+    display: inline-block; padding: 4px 10px; background: var(--midrar-white);
+    border: 1px solid var(--midrar-border); border-radius: 20px;
+    font-size: 11px; font-weight: 500; color: var(--midrar-deep);
+    margin: 3px 2px; box-shadow: var(--shadow-sm);
+    cursor: default; transition: all .2s;
+  }
+  .matrix-dot:hover { background: var(--midrar-deep); color: var(--midrar-gold-lt); border-color: var(--midrar-deep); }
+  .matrix-axis-x {
+    text-align: center; font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--midrar-muted); font-weight: 600; margin-top: 10px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .matrix-axis-y {
+    position: absolute; left: -52px; top: 50%; transform: translateY(-50%) rotate(-90deg);
+    font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--midrar-muted); font-weight: 600;
+    white-space: nowrap;
+  }
+  .matrix-outer { position: relative; padding-left: 64px; }
+  .matrix-axis-x .arrow { color: var(--midrar-gold); font-size: 16px; }
+
+  /* ── ACTION TABLE ── */
+  .action-table { width: 100%; border-collapse: collapse; }
+  .action-table th { background: var(--midrar-forest); color: var(--midrar-gold-lt); padding: 12px 16px; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; text-align: left; }
+  .action-table td { padding: 12px 16px; border-bottom: 1px solid var(--midrar-border); font-size: 13px; vertical-align: top; }
+  .pri-badge {
+    display: inline-block; padding: 3px 10px; border-radius: 20px;
+    font-size: 11px; font-weight: 700;
+  }
+  .pri-badge.p1 { background: var(--midrar-deep); color: var(--midrar-gold-lt); }
+  .pri-badge.p2 { background: var(--midrar-ok-lt); color: var(--midrar-green); }
+  .pri-badge.p3 { background: var(--midrar-cream); color: var(--midrar-muted); }
+
+  /* ── GENERIC HELPERS ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .callout {
+    background: rgba(201,168,76,.08); border: 1px solid rgba(201,168,76,.3);
+    border-left: 4px solid var(--midrar-gold); border-radius: var(--radius);
+    padding: 18px 22px; margin: 20px 0;
+  }
+  .callout p { font-size: 14px; color: var(--midrar-deep); line-height: 1.65; font-style: italic; }
+  .callout strong { color: var(--midrar-forest); }
+  .note-block {
+    background: var(--midrar-warn-lt); border: 1px solid rgba(192,57,43,.2);
+    border-left: 4px solid var(--midrar-warn); border-radius: var(--radius);
+    padding: 16px 22px; margin: 16px 0;
+  }
+  .note-block p { font-size: 13.5px; color: #7B3428; line-height: 1.6; }
+  .divider { border: none; border-top: 2px solid var(--midrar-border); margin: 32px 0; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .tag { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+  .tag.green { background: var(--midrar-ok-lt); color: var(--midrar-green); }
+  .tag.gold  { background: rgba(201,168,76,.12); color: #8B6914; }
+  .tag.red   { background: var(--midrar-warn-lt); color: var(--midrar-warn); }
+  .tag.muted { background: var(--midrar-cream); color: var(--midrar-muted); }
+  h3.sub-heading { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--midrar-deep); margin: 28px 0 14px; }
+  p.body-text { font-size: 14px; color: var(--midrar-text); line-height: 1.75; margin-bottom: 16px; }
+  ul.bullet-list { list-style: none; margin: 0 0 16px; }
+  ul.bullet-list li { font-size: 13.5px; color: var(--midrar-text); padding: 6px 0; border-bottom: 1px solid var(--midrar-border); display: flex; gap: 10px; }
+  ul.bullet-list li:last-child { border-bottom: none; }
+  ul.bullet-list li::before { content: '▸'; color: var(--midrar-gold); flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer {
+    background: var(--midrar-deep); padding: 40px 64px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+  }
+  .report-footer .brand { font-family: var(--font-display); font-size: 18px; color: var(--midrar-gold); font-weight: 700; }
+  .report-footer .meta { font-size: 12px; color: rgba(255,255,255,.4); }
+  .report-footer .disclaimer { font-size: 11px; color: rgba(255,255,255,.3); max-width: 400px; line-height: 1.5; }
+
+  @media print {
+    .sidenav { display: none; }
+    .main { margin-left: 0; }
+    .section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ SIDEBAR NAV ═══════ -->
+<nav class="sidenav">
+  <div class="sidenav-logo">
+    <div class="brand">مدرار · Midrar</div>
+    <div class="sub">Content Analysis 2026</div>
+  </div>
+  <span class="nav-section">Overview</span>
+  <a href="#exec">Executive Summary</a>
+  <a href="#brand">Brand Overview</a>
+  <span class="nav-section">Audience</span>
+  <a href="#audience">Target Audience</a>
+  <span class="nav-section">Content</span>
+  <a href="#strengths">Strengths</a>
+  <a href="#weaknesses">Weaknesses & Gaps</a>
+  <a href="#messaging">Messaging & Positioning</a>
+  <a href="#audit">Content Audit</a>
+  <span class="nav-section">Journey & Trust</span>
+  <a href="#journey">Customer Journey Map</a>
+  <a href="#trust">Trust & Credibility</a>
+  <span class="nav-section">SEO</span>
+  <a href="#seo">SEO Analysis</a>
+  <span class="nav-section">Strategy</span>
+  <a href="#quickwins">Quick Wins</a>
+  <a href="#strategic">Strategic Moves</a>
+  <a href="#competitive">Competitive Benchmark</a>
+  <a href="#matrix">Priority Matrix</a>
+</nav>
+
+<!-- ═══════════════════════════════════════════ MAIN ═══════════════ -->
+<main class="main">
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-badge">🔍 Website Content Analysis · 2026</div>
+  <h1>Midrar <span>Content</span><br>Analysis Report</h1>
+  <p class="hero-desc">A deep-dive content strategy audit of midrar.sa — covering audience intelligence, content quality, SEO performance, customer journey, and actionable recommendations for growth in Saudi Arabia's proptech market.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><div class="label">Website</div><div class="value">midrar.sa</div></div>
+    <div class="hero-meta-item"><div class="label">Market</div><div class="value">Saudi Arabia — KSA</div></div>
+    <div class="hero-meta-item"><div class="label">Sector</div><div class="value">Proptech / FinTech</div></div>
+    <div class="hero-meta-item"><div class="label">Report Date</div><div class="value">May 2026</div></div>
+    <div class="hero-meta-item"><div class="label">Methodology</div><div class="value">External Content Audit</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ SECTION 1 ═════════ -->
+<section class="section" id="exec">
+  <div class="section-eyebrow"><span class="num">01</span><span class="tag">Executive Summary</span></div>
+  <h2 class="section-title">The Big Picture</h2>
+  <p class="section-sub">At a glance — Midrar's overall content health score and the four most critical findings that define the current gap between its business ambition and its website's ability to convert visitors.</p>
+
+  <div class="score-grid">
+    <div class="score-card amber">
+      <div class="score-num">5.8</div>
+      <div class="score-label">Overall Content Score<br><span style="font-size:10px;opacity:.6">out of 10</span></div>
+    </div>
+    <div class="score-card red">
+      <div class="score-num">4.2</div>
+      <div class="score-label">SEO Readiness</div>
+    </div>
+    <div class="score-card gold">
+      <div class="score-num">6.1</div>
+      <div class="score-label">Messaging Clarity</div>
+    </div>
+    <div class="score-card green">
+      <div class="score-num">7.0</div>
+      <div class="score-label">Brand Positioning</div>
+    </div>
+    <div class="score-card red">
+      <div class="score-num">3.9</div>
+      <div class="score-label">Trust Signals</div>
+    </div>
+    <div class="score-card amber">
+      <div class="score-num">5.5</div>
+      <div class="score-label">User Journey Flow</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p><strong>Bottom line:</strong> Midrar occupies a genuinely differentiated position in Saudi proptech — the only platform combining rental financing for both landlords and tenants with fractional ownership and usufruct products. The business idea is strong. The website's content, however, fails to translate that differentiation into a compelling, trust-driving, conversion-ready experience. Fixing this is not a redesign problem — it is a content and messaging problem.</p>
+  </div>
+
+  <div class="exec-findings">
+    <div class="finding-block strength">
+      <h4>✓ Strengths</h4>
+      <ul>
+        <li>Genuinely multi-sided product addressing landlords, tenants, and investors simultaneously</li>
+        <li>Arabic-first content with good cultural fit for target audience</li>
+        <li>FAQ section addresses real user objections</li>
+        <li>Proptech positioning aligns with Vision 2030 narrative</li>
+      </ul>
+    </div>
+    <div class="finding-block weakness">
+      <h4>✗ Critical Weaknesses</h4>
+      <ul>
+        <li>No dedicated landing pages per audience segment or product</li>
+        <li>Value proposition is buried — takes 3+ scrolls to understand what Midrar does</li>
+        <li>Zero social proof: no testimonials, no transaction data, no partner logos</li>
+        <li>SEO is practically invisible — no blog, no long-form, no structured data</li>
+      </ul>
+    </div>
+    <div class="finding-block opportunity">
+      <h4>→ Key Opportunities</h4>
+      <ul>
+        <li>Educational content gap: no competitor publishes Arabic proptech explainers at scale</li>
+        <li>Landlord-first content is an underserved angle in the market</li>
+        <li>Vision 2030 housing keywords have high volume and low competition</li>
+        <li>Trust-building content (regulatory, Shariah compliance) can convert high-intent visitors</li>
+      </ul>
+    </div>
+    <div class="finding-block risk">
+      <h4>⚠ Risks</h4>
+      <ul>
+        <li>Competitors like Ghanem and Jozo have stronger investor-facing content</li>
+        <li>Financial products require deep trust content — current site underdelivers</li>
+        <li>No clear CTA architecture means paid traffic would be wasted</li>
+        <li>Bi-lingual inconsistency (Arabic/English) creates brand perception gaps</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ SECTION 2 ═════════ -->
+<section class="section section-alt" id="brand">
+  <div class="section-eyebrow"><span class="num">02</span><span class="tag">Brand & Business Overview</span></div>
+  <h2 class="section-title">What Midrar Does — and Why It Matters</h2>
+  <p class="section-sub">Before analyzing content, it is essential to understand the full scope of Midrar's business model and its position within Saudi Arabia's rapidly evolving proptech landscape.</p>
+
+  <div class="two-col">
+    <div>
+      <h3 class="sub-heading">Business Model Summary</h3>
+      <p class="body-text">Midrar (مدرار) operates as a real estate financial technology platform based in Saudi Arabia, operating under the Midrar Proptech umbrella. Its product portfolio sits at the intersection of real estate investment and rental payment infrastructure — a relatively rare combination in the MENA proptech space.</p>
+      <p class="body-text">The platform serves three distinct user groups simultaneously: <strong>property owners</strong> who want to collect rent upfront without waiting for monthly payments; <strong>tenants</strong> who need flexible installment-based payment options; and <strong>investors</strong> seeking fractional entry into income-generating real estate without full property acquisition.</p>
+
+      <h3 class="sub-heading">Core Products</h3>
+      <ul class="bullet-list">
+        <li><strong>Fractional Ownership (التملك الجزئي):</strong> Enables investors to own a documented, registered share (نسبة مشاعة) in income-generating properties, with returns proportional to ownership percentage.</li>
+        <li><strong>Usufruct Rights (حق الانتفاع):</strong> A Shariah-compliant investment structure allowing investors to benefit from operational returns of a property for a defined period without transferring legal ownership.</li>
+        <li><strong>Landlord Financing:</strong> Midrar advances the full annual rent to property owners upfront, eliminating collection risk and cash flow uncertainty.</li>
+        <li><strong>Tenant Installments:</strong> Tenants pay their rent in flexible monthly installments rather than a single lump-sum cheque, reducing financial strain.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="sub-heading">Market Context</h3>
+      <p class="body-text">Saudi Arabia's proptech sector is experiencing rapid growth driven by Vision 2030's housing and investment goals, with REGA actively building a regulatory sandbox for fractional ownership platforms. The first REGA sandbox cohort supported nine platforms, all of which have since received official operating licenses — signaling a maturing, increasingly competitive landscape.</p>
+      <p class="body-text">Key competitors in adjacent spaces include Ghanem (fractional ownership, USD 7.1M funded), Jozo (tokenized real estate, $2.2M seed), and Mdak (crowdfunded fractional investment). Midrar's unique angle is the dual-sided rental financing component alongside investment products — a differentiation that the current website fails to communicate effectively.</p>
+
+      <div class="callout" style="margin-top:20px">
+        <p><strong>Strategic Tension:</strong> Midrar is trying to serve two fundamentally different user mindsets on the same homepage — people managing cash flow (landlords/tenants) and people growing wealth (investors). This creates a content architecture challenge that the current site has not solved.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ SECTION 3 ═════════ -->
+<section class="section" id="audience">
+  <div class="section-eyebrow"><span class="num">03</span><span class="tag">Target Audience Analysis</span></div>
+  <h2 class="section-title">Four Audiences, Four Mindsets</h2>
+  <p class="section-sub">Midrar's content must serve radically different motivations under one roof. Understanding each persona's psychology is prerequisite to building content that converts.</p>
+
+  <div class="persona-grid">
+
+    <!-- Persona 1 -->
+    <div class="persona-card">
+      <div class="persona-header">
+        <div class="persona-icon">🏠</div>
+        <div>
+          <div class="persona-name">The Landlord (Upfront Seeker)</div>
+          <div class="persona-role">Property Owner · Saudi National or Expat</div>
+        </div>
+      </div>
+      <div class="persona-body">
+        <div class="persona-row">
+          <label>Core Motivation</label>
+          <p>Eliminate the anxiety of chasing rent payments. Receive the full annual value upfront, then hand off the collection headache to Midrar. Cash certainty for planning — renovation, reinvestment, or personal expenses.</p>
+        </div>
+        <div class="persona-row">
+          <label>Key Questions Before Trusting Midrar</label>
+          <p>How does Midrar make money from this? Is my tenant still legally bound? What if the tenant defaults — am I protected? Is this regulated?</p>
+        </div>
+        <div class="persona-row">
+          <label>Motivators</label>
+          <div class="persona-tags">
+            <span class="persona-tag">Cash flow certainty</span>
+            <span class="persona-tag">Zero default risk</span>
+            <span class="persona-tag">No collection effort</span>
+            <span class="persona-tag">Legal security</span>
+          </div>
+        </div>
+        <div class="persona-row">
+          <label>Friction Points</label>
+          <div class="persona-tags">
+            <span class="persona-tag pain">Unfamiliar with FinTech</span>
+            <span class="persona-tag pain">Trust barriers</span>
+            <span class="persona-tag pain">Needs quick onboarding</span>
+          </div>
+        </div>
+        <div class="persona-row">
+          <label>Content Priority</label>
+          <div class="persona-tags">
+            <span class="persona-tag gold">How it works page</span>
+            <span class="persona-tag gold">Legal protection proof</span>
+            <span class="persona-tag gold">Real landlord stories</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Persona 2 -->
+    <div class="persona-card">
+      <div class="persona-header">
+        <div class="persona-icon">🔑</div>
+        <div>
+          <div class="persona-name">The Tenant (Installment Seeker)</div>
+          <div class="persona-role">Young Professional · Family Renter</div>
+        </div>
+      </div>
+      <div class="persona-body">
+        <div class="persona-row">
+          <label>Core Motivation</label>
+          <p>Avoid the annual lump-sum rent payment that wipes out savings or requires borrowing. Pay monthly like a utility bill. Preserve cash for emergencies, children's education, or other financial goals.</p>
+        </div>
+        <div class="persona-row">
+          <label>Key Questions Before Trusting Midrar</label>
+          <p>Is there hidden interest? Is it Shariah-compliant? What fees does Midrar charge me? Does my landlord know about this? What happens if I miss a payment?</p>
+        </div>
+        <div class="persona-row">
+          <label>Motivators</label>
+          <div class="persona-tags">
+            <span class="persona-tag">Budget flexibility</span>
+            <span class="persona-tag">Monthly payment ease</span>
+            <span class="persona-tag">Shariah compliance</span>
+            <span class="persona-tag">Simple process</span>
+          </div>
+        </div>
+        <div class="persona-row">
+          <label>Friction Points</label>
+          <div class="persona-tags">
+            <span class="persona-tag pain">Fee clarity</span>
+            <span class="persona-tag pain">Credit concerns</span>
+            <span class="persona-tag pain">Landlord approval worry</span>
+          </div>
+        </div>
+        <div class="persona-row">
+          <label>Content Priority</label>
+          <div class="persona-tags">
+            <span class="persona-tag gold">Shariah certificate</span>
+            <span class="persona-tag gold">Fee transparency</span>
+            <span class="persona-tag gold">Step-by-step walkthrough</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Persona 3 -->
+    <div class="persona-card">
+      <div class="persona-header">
+        <div class="persona-icon">📈</div>
+        <div>
+          <div class="persona-name">The Retail Investor</div>
+          <div class="persona-role">Individual Investor · SAR 10K–500K Range</div>
+        </div>
+      </div>
+      <div class="persona-body">
+        <div class="persona-row">
+          <label>Core Motivation</label>
+          <p>Access income-generating real estate without buying a full property. Earn passive returns through rental yields on fractionally owned or usufruct-structured assets. Diversify beyond stocks and savings accounts.</p>
+        </div>
+        <div class="persona-row">
+          <label>Key Questions Before Trusting Midrar</label>
+          <p>What returns can I realistically expect? Is my investment protected by a registered deed? How liquid is this? Is Midrar licensed by REGA? What is the minimum investment?</p>
+        </div>
+        <div class="persona-row">
+          <label>Motivators</label>
+          <div class="persona-tags">
+            <span class="persona-tag">Documented deed in my name</span>
+            <span class="persona-tag">Passive income</span>
+            <span class="persona-tag">Low entry barrier</span>
+            <span class="persona-tag">REGA compliance</span>
+          </div>
+        </div>
+        <div class="persona-row">
+          <label>Friction Points</label>
+          <div class="persona-tags">
+            <span class="persona-tag pain">No return data shown</span>
+            <span class="persona-tag pain">Regulatory status unclear</span>
+            <span class="persona-tag pain">No active deals visible</span>
+          </div>
+        </div>
+        <div class="persona-row">
+          <label>Content Priority</label>
+          <div class="persona-tags">
+            <span class="persona-tag gold">Live property listings</span>
+            <span class="persona-tag gold">Historical return data</span>
+            <span class="persona-tag gold">Regulatory disclosure</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Persona 4 -->
+    <div class="persona-card">
+      <div class="persona-header">
+        <div class="persona-icon">🏢</div>
+        <div>
+          <div class="persona-name">The Institutional Partner</div>
+          <div class="persona-role">Developer / Property Management Co. / Fund</div>
+        </div>
+      </div>
+      <div class="persona-body">
+        <div class="persona-row">
+          <label>Core Motivation</label>
+          <p>Partner with Midrar to inject liquidity into portfolios, offload collection risk, or co-structure investment products. Looking for scale, reliability, and regulatory clean hands — not a retail experience.</p>
+        </div>
+        <div class="persona-row">
+          <label>Key Questions Before Trusting Midrar</label>
+          <p>Who are Midrar's founders and what is the track record? What regulatory licenses do they hold? What is the deal minimum? Is there a dedicated B2B contact?</p>
+        </div>
+        <div class="persona-row">
+          <label>Motivators</label>
+          <div class="persona-tags">
+            <span class="persona-tag">Portfolio liquidity</span>
+            <span class="persona-tag">Proven tech stack</span>
+            <span class="persona-tag">Scale capacity</span>
+            <span class="persona-tag">Institutional-grade docs</span>
+          </div>
+        </div>
+        <div class="persona-row">
+          <label>Friction Points</label>
+          <div class="persona-tags">
+            <span class="persona-tag pain">No B2B landing page</span>
+            <span class="persona-tag pain">No team/about page</span>
+            <span class="persona-tag pain">No credentials shown</span>
+          </div>
+        </div>
+        <div class="persona-row">
+          <label>Content Priority</label>
+          <div class="persona-tags">
+            <span class="persona-tag gold">About/Team page</span>
+            <span class="persona-tag gold">Partnership CTA</span>
+            <span class="persona-tag gold">Case studies / credentials</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="note-block" style="margin-top:28px">
+    <p><strong>Critical Gap:</strong> The current website treats all four personas as a single audience and serves them from one undifferentiated homepage. There is no segmentation, no conditional content path, and no audience-specific landing page. A landlord and a retail investor have almost nothing in common as content consumers — yet Midrar forces them through the same experience.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ SECTION 4 ═════════ -->
+<section class="section section-alt" id="strengths">
+  <div class="section-eyebrow"><span class="num">04</span><span class="tag">Content Strengths</span></div>
+  <h2 class="section-title">What the Website Gets Right</h2>
+  <p class="section-sub">Recognizing genuine strengths is as important as diagnosing gaps. These are the content decisions Midrar has made that work — and should be amplified, not replaced.</p>
+
+  <div class="sw-grid">
+    <div class="sw-block s">
+      <div class="sw-header"><h3>✓ Content Strengths</h3></div>
+      <div class="sw-body">
+        <div class="sw-item">
+          <h5>Clear Product Differentiation in Copy</h5>
+          <p>The homepage copy correctly distinguishes between the landlord upfront model and the tenant installment model — two fundamentally different problems solved by one product. This is logically structured even if not visually clear.</p>
+        </div>
+        <div class="sw-item">
+          <h5>Arabic-First Language Strategy</h5>
+          <p>Midrar leads in Arabic, which is appropriate for a Saudi market targeting landlords and tenants who are not necessarily digital-finance savvy. The decision to lead in the native language reduces friction significantly compared to English-first competitors.</p>
+        </div>
+        <div class="sw-item">
+          <h5>FAQ Section Addresses Real Objections</h5>
+          <p>The FAQ (frequently asked questions) addresses some of the product mechanics — particularly for fractional ownership and usufruct rights — in a plain-language format. This reduces confusion for middle-funnel visitors and partially substitutes for the missing explainer content.</p>
+        </div>
+        <div class="sw-item">
+          <h5>Proptech Framing Aligns with Vision 2030</h5>
+          <p>Positioning Midrar as a "proptech" company rather than a lending or finance company is strategically correct. It aligns with REGA's sandbox narrative and frames the brand as a technology innovator rather than a financial intermediary — reducing potential regulatory-skepticism from visitors.</p>
+        </div>
+        <div class="sw-item">
+          <h5>Shariah Compliance Signals Are Present</h5>
+          <p>The website references Shariah-compliant structures for its products. In a market where Islamic finance is not optional but expected, this is table stakes — and Midrar has at least acknowledged it, unlike some competitors who bury it in footnotes.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sw-block w">
+      <div class="sw-header"><h3>✗ Strengths That Are Undermined</h3></div>
+      <div class="sw-body">
+        <div class="sw-item">
+          <h5>Product Clarity — But No Visual Hierarchy</h5>
+          <p>The copy explains the products, but the visual weight on the page doesn't guide the reader to the right product for their situation. A landlord and a tenant both see the same undifferentiated block of text.</p>
+        </div>
+        <div class="sw-item">
+          <h5>Arabic Language — But Inconsistent Bilingual Experience</h5>
+          <p>While Arabic is the primary language, the English version of the site appears underdeveloped or missing entirely. For a proptech brand attracting institutional partners, expat landlords, or GCC investors comfortable in English, this creates a trust gap.</p>
+        </div>
+        <div class="sw-item">
+          <h5>FAQ Exists — But Is Generic and Incomplete</h5>
+          <p>The FAQ answers generic mechanics but doesn't address the emotional objections that actually prevent conversion: "What if my tenant refuses to participate?" or "Is my capital protected?" These are the questions that matter most at the decision point.</p>
+        </div>
+        <div class="sw-item">
+          <h5>Proptech Positioning — But No Tech Evidence</h5>
+          <p>Calling the platform proptech without showing what the technology actually does — no dashboard previews, no app screenshots, no process visualization — makes the claim feel like a label rather than a proof point.</p>
+        </div>
+        <div class="sw-item">
+          <h5>Shariah Compliance Mentioned — But Not Documented</h5>
+          <p>Mentioning Shariah compliance without linking to a Sharia committee certificate, a fatwa, or any official documentation is significantly weaker than what competitors like Ghanem publish — full committee decisions in PDF, named scholars, and decision numbers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ SECTION 5 ═════════ -->
+<section class="section" id="weaknesses">
+  <div class="section-eyebrow"><span class="num">05</span><span class="tag">Weaknesses & Content Gaps</span></div>
+  <h2 class="section-title">The Gaps That Are Costing Conversions</h2>
+  <p class="section-sub">These are not cosmetic issues. Each gap identified below represents a point in the user journey where a potential customer loses confidence and leaves — often without returning.</p>
+
+  <h3 class="sub-heading">Category A: Messaging & Clarity Gaps</h3>
+  <ul class="bullet-list">
+    <li><strong>No clear primary headline that states the core promise.</strong> The hero section opens with a tagline about "innovative proptech solutions" but does not tell a landlord, a tenant, or an investor what specifically changes for them in 10 words or less. The value proposition is abstract where it should be specific.</li>
+    <li><strong>Product terminology is assumed, not explained.</strong> Terms like "حق الانتفاع" (usufruct rights) appear without immediate plain-language definition on first encounter. A first-time visitor from Google has no context for this term and will not scroll past it.</li>
+    <li><strong>No product comparison format.</strong> There is no matrix or visual comparison showing the difference between fractional ownership and usufruct rights — two products that are conceptually close enough to confuse an average investor without detailed financial literacy.</li>
+    <li><strong>The two sides of the rental product (landlord + tenant) are not addressed as a connected system.</strong> A landlord who reads the tenant section might wonder whether tenants are paying a premium that hurts the owner's relationship with them. This is never addressed.</li>
+  </ul>
+
+  <h3 class="sub-heading">Category B: Trust & Social Proof Gaps</h3>
+  <ul class="bullet-list">
+    <li><strong>Zero testimonials or customer stories.</strong> Not a single quote, case study, or user outcome appears on the site. For a financial product asking users to trust Midrar with real estate transactions worth tens of thousands of riyals, this is a critical conversion barrier.</li>
+    <li><strong>No transaction or platform metrics.</strong> Competitors show funded deal values, number of investors, and total rent processed. Midrar shows nothing. Even early-stage numbers (SAR 2M processed, 150 landlords served) would dramatically shift perceived credibility.</li>
+    <li><strong>No team or founders page.</strong> In financial services, trust flows from people. Institutional and retail investors both want to know who is running this platform. The complete absence of a team page is a significant credibility gap.</li>
+    <li><strong>Regulatory status is unclear.</strong> Whether Midrar operates under REGA's sandbox, SAMA licensing, or another regulatory framework is never stated explicitly on the site. This is a deal-breaker for cautious investors who know the Saudi financial services landscape.</li>
+  </ul>
+
+  <h3 class="sub-heading">Category C: Conversion Architecture Gaps</h3>
+  <ul class="bullet-list">
+    <li><strong>No dedicated landing pages per product or audience.</strong> A landlord looking to collect rent upfront and an investor looking to buy fractional shares both land on the same homepage and are expected to self-identify. There is no "Are you a landlord? Click here" UX pattern.</li>
+    <li><strong>CTA buttons are generic and low-intent.</strong> The dominant call-to-action on the site appears to be a general "contact us" or "learn more" pattern — neither of which creates urgency or speaks to a specific outcome. High-converting financial CTAs should be product-specific: "See available properties," "Get your advance rent offer," "Start with SAR 1,000."</li>
+    <li><strong>No lead capture mechanism beyond generic contact.</strong> There is no newsletter, no waitlist for new properties, no downloadable guide, and no structured form that qualifies the lead type. All acquisition is forced through the same funnel regardless of user intent.</li>
+  </ul>
+
+  <h3 class="sub-heading">Category D: Content Depth Gaps</h3>
+  <ul class="bullet-list">
+    <li><strong>No blog, no articles, no educational content.</strong> This is perhaps the largest single gap. The Saudi proptech space is rich with unanswered questions that everyday users are searching for — "كيف أستثمر في العقار بمبلغ صغير," "حق الانتفاع مقابل التملك الجزئي" — and Midrar is not capturing any of that organic intent.</li>
+    <li><strong>No video content or product walkthrough.</strong> Financial products with complex structures (fractional ownership, usufruct, rental financing) convert significantly better when demonstrated visually. A 90-second explainer video per product would reduce FAQ volume and increase conversion.</li>
+    <li><strong>No case study or deal showcase.</strong> Showing a completed deal — property type, location, return achieved, investor profile — is the single most powerful trust-building content format for a real estate investment platform. It is entirely absent.</li>
+  </ul>
+
+  <div class="note-block">
+    <p><strong>The Pattern:</strong> Midrar's content weaknesses cluster around one theme — the platform asks users to trust it with major financial decisions while providing almost none of the proof, transparency, or specificity that trust requires. Every category of weakness above is, at its root, a trust problem disguised as a content problem.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ SECTION 6 ═════════ -->
+<section class="section section-alt" id="messaging">
+  <div class="section-eyebrow"><span class="num">06</span><span class="tag">Messaging & Positioning Analysis</span></div>
+  <h2 class="section-title">Is the Message Reaching the Right Person?</h2>
+  <p class="section-sub">Beyond what the website says, this section examines how it says it — and whether the messaging hierarchy, tone, and competitive differentiation are working in Midrar's favor.</p>
+
+  <div class="two-col">
+    <div>
+      <h3 class="sub-heading">Current Value Proposition Audit</h3>
+      <p class="body-text">Midrar's current implied value proposition reads as something like: <em>"We offer innovative proptech solutions through fractional ownership, usufruct rights, and flexible rental payments."</em></p>
+      <p class="body-text">The problem is that this is a <strong>feature list, not a promise</strong>. A value proposition must answer "What changes in your life because of us?" — not "What do we offer?"</p>
+      <p class="body-text">Compare this to how the strongest proptech value propositions are structured:</p>
+      <ul class="bullet-list">
+        <li><strong>For Landlords:</strong> "Collect your full year's rent today. Midrar handles the rest." — specific, outcome-driven, removes a known pain point.</li>
+        <li><strong>For Tenants:</strong> "Split your rent into easy monthly payments. No full cheque, no stress." — tangible, emotionally resonant, addresses a real financial anxiety.</li>
+        <li><strong>For Investors:</strong> "Own a registered share in income-generating property from SAR 1,000. Earn monthly returns." — low barrier, documented proof, clear reward.</li>
+      </ul>
+      <p class="body-text">None of these propositions exist on the current site in this clarity or specificity. The messaging is positioned around Midrar as a company, rather than around the user's problem and outcome.</p>
+    </div>
+    <div>
+      <h3 class="sub-heading">Tone & Voice Assessment</h3>
+      <p class="body-text">The current tone sits somewhere between formal financial Arabic and corporate tech language. This hybrid is not wrong, but it lacks distinctiveness. The copy does not feel like it belongs to a company with a specific personality — it reads like a category description rather than a brand voice.</p>
+      <p class="body-text">For a fintech brand operating in a trust-sensitive financial category, the recommended tone profile is:</p>
+      <ul class="bullet-list">
+        <li><strong>Confident but approachable</strong> — authoritative on how the product works, without being inaccessible to a first-time user.</li>
+        <li><strong>Transparent</strong> — proactively addresses fees, risks, and regulatory status before users ask.</li>
+        <li><strong>Outcome-focused</strong> — leads with what users gain, not what Midrar provides.</li>
+        <li><strong>Human</strong> — a real customer's problem described in their own words, not in legal/financial language.</li>
+      </ul>
+      <div class="callout" style="margin-top:16px">
+        <p><strong>Voice Recommendation:</strong> Midrar should develop a distinct content voice guide — defining what the brand says, what it never says, and how it talks about money, risk, and property. This consistency would pay dividends across website, social, and customer communications.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h3 class="sub-heading">Competitive Messaging Benchmarking</h3>
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th>Platform</th>
+        <th>Primary Message</th>
+        <th>Trust Signals</th>
+        <th>CTA Specificity</th>
+        <th>Audience Targeting</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="midrar-row">
+        <td>Midrar</td>
+        <td>Proptech with multiple products (generic)</td>
+        <td>Minimal — no docs, no data</td>
+        <td>Low — "Contact us"</td>
+        <td>Mixed — all personas on one page</td>
+      </tr>
+      <tr>
+        <td>Ghanem</td>
+        <td>"Own a registered share in income property" (specific)</td>
+        <td>Strong — Shariah committee PDFs, REGA sandbox status</td>
+        <td>High — "Register your interest"</td>
+        <td>Investor-focused dedicated experience</td>
+      </tr>
+      <tr>
+        <td>Jozo</td>
+        <td>"First real estate tokenization platform in KSA"</td>
+        <td>Good — seed funding news, regulatory mentions</td>
+        <td>Medium — "Get started"</td>
+        <td>Investor and developer audience</td>
+      </tr>
+      <tr>
+        <td>Mdak</td>
+        <td>"Own a share with SAR 500 only"</td>
+        <td>Medium — app-based, monthly distributions shown</td>
+        <td>High — specific minimum amount stated</td>
+        <td>Retail investor, mobile-first</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note-block">
+    <p><strong>Key Competitive Gap:</strong> Midrar is the only platform in this set attempting to serve both the rental market and the investment market simultaneously. This is a strength that could become a powerful differentiator — but only if the messaging separates these audiences clearly. Currently, the attempt to serve everyone means the message resonates with no one specifically.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ SECTION 7 ═════════ -->
+<section class="section" id="journey">
+  <div class="section-eyebrow"><span class="num">07</span><span class="tag">Customer Journey Mapping</span></div>
+  <h2 class="section-title">How Users Travel Through the Site — And Where They Leave</h2>
+  <p class="section-sub">Mapping the current customer journey reveals specific friction points at each stage of the funnel. Every friction point below represents a measurable drop in conversion probability.</p>
+
+  <div class="journey-stages">
+    <div class="journey-stage">
+      <span class="stage-icon">🔍</span>
+      <div class="stage-name">Awareness</div>
+      <div class="stage-action">Discovers Midrar</div>
+    </div>
+    <div class="journey-stage">
+      <span class="stage-icon">🏠</span>
+      <div class="stage-name">Consideration</div>
+      <div class="stage-action">Explores the site</div>
+    </div>
+    <div class="journey-stage">
+      <span class="stage-icon">🤔</span>
+      <div class="stage-name">Evaluation</div>
+      <div class="stage-action">Compares &amp; questions</div>
+    </div>
+    <div class="journey-stage">
+      <span class="stage-icon">✅</span>
+      <div class="stage-name">Intent</div>
+      <div class="stage-action">Ready to act</div>
+    </div>
+    <div class="journey-stage">
+      <span class="stage-icon">🎯</span>
+      <div class="stage-name">Conversion</div>
+      <div class="stage-action">Signs up / contacts</div>
+    </div>
+  </div>
+
+  <div class="journey-detail">
+    <div class="jd-col">
+      <h4>Awareness</h4>
+      <ul>
+        <li>Social media mention</li>
+        <li>Word of mouth</li>
+        <li>Google search (limited SEO)</li>
+        <li>Industry event exposure</li>
+      </ul>
+      <div class="friction">
+        <h5>⚠ Friction</h5>
+        <p>Almost no organic search visibility. No educational content drives discovery. Awareness is entirely dependent on paid or referral channels.</p>
+      </div>
+    </div>
+    <div class="jd-col">
+      <h4>Consideration</h4>
+      <ul>
+        <li>Lands on homepage</li>
+        <li>Sees product names</li>
+        <li>Reads hero copy</li>
+        <li>Scrolls to FAQ</li>
+      </ul>
+      <div class="friction">
+        <h5>⚠ Friction</h5>
+        <p>No audience segmentation on homepage. Landlord and investor see the same message. Unclear which product is "for me." High likelihood of premature exit.</p>
+      </div>
+    </div>
+    <div class="jd-col">
+      <h4>Evaluation</h4>
+      <ul>
+        <li>Seeks social proof</li>
+        <li>Looks for returns data</li>
+        <li>Checks regulatory info</li>
+        <li>Reads FAQ</li>
+      </ul>
+      <div class="friction">
+        <h5>⚠ Friction</h5>
+        <p>No testimonials, no deal data, no regulatory disclosure, no team page. This is the highest drop-off stage — nothing to build confidence for a financial decision.</p>
+      </div>
+    </div>
+    <div class="jd-col">
+      <h4>Intent</h4>
+      <ul>
+        <li>Looks for CTA</li>
+        <li>Wants to see product</li>
+        <li>Considers registering</li>
+        <li>Needs next step</li>
+      </ul>
+      <div class="friction">
+        <h5>⚠ Friction</h5>
+        <p>Generic CTAs with no specificity. "Contact us" feels like a cold call request. No self-serve product preview. Intent turns to hesitation without a clear low-risk next step.</p>
+      </div>
+    </div>
+    <div class="jd-col">
+      <h4>Conversion</h4>
+      <ul>
+        <li>Submits contact form</li>
+        <li>Calls team</li>
+        <li>Registers account</li>
+        <li>Books appointment</li>
+      </ul>
+      <div class="friction">
+        <h5>⚠ Friction</h5>
+        <p>Conversion architecture is not optimized per product or persona. A landlord and an investor convert through the same form with no segmentation, leading to poor lead qualification downstream.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:28px">
+    <p><strong>The Core Journey Problem:</strong> Midrar's content provides enough to create initial curiosity but not enough to sustain it through the evaluation stage. The longest distance in the funnel — between "I'm interested" and "I trust this enough to take action" — is almost entirely unsupported by current content. This is where the majority of potential customers are being lost.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ SECTION 8 ═════════ -->
+<section class="section section-alt" id="audit">
+  <div class="section-eyebrow"><span class="num">08</span><span class="tag">Content Audit by Section</span></div>
+  <h2 class="section-title">Page-by-Page Content Assessment</h2>
+  <p class="section-sub">A structured evaluation of each major content section on the Midrar website, rated across four criteria: Clarity, Completeness, Conversion Value, and Trust Contribution.</p>
+
+  <table class="audit-table">
+    <thead>
+      <tr>
+        <th style="width:18%">Section</th>
+        <th style="width:12%">Clarity</th>
+        <th style="width:12%">Completeness</th>
+        <th style="width:12%">Conversion</th>
+        <th style="width:12%">Trust</th>
+        <th>Key Issues</th>
+        <th style="width:15%">Priority Fix</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Hero / Above Fold</strong></td>
+        <td><span class="rating fair">Fair</span></td>
+        <td><span class="rating poor">Poor</span></td>
+        <td><span class="rating poor">Poor</span></td>
+        <td><span class="rating poor">Poor</span></td>
+        <td>Tagline is generic. No specific outcome for any audience. No social proof. CTA is weak.</td>
+        <td><span class="rating poor">Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>Landlord Product Section</strong></td>
+        <td><span class="rating fair">Fair</span></td>
+        <td><span class="rating fair">Fair</span></td>
+        <td><span class="rating fair">Fair</span></td>
+        <td><span class="rating poor">Poor</span></td>
+        <td>Benefit is stated but mechanism is vague. No numbers. No landlord testimonial. No process visual.</td>
+        <td><span class="rating poor">Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>Tenant Product Section</strong></td>
+        <td><span class="rating good">Good</span></td>
+        <td><span class="rating fair">Fair</span></td>
+        <td><span class="rating fair">Fair</span></td>
+        <td><span class="rating poor">Poor</span></td>
+        <td>Benefit of installments is clear. Missing: fee transparency, Shariah certification link, tenant FAQ answers.</td>
+        <td><span class="rating fair">High</span></td>
+      </tr>
+      <tr>
+        <td><strong>Investment Section (Fractional / Usufruct)</strong></td>
+        <td><span class="rating fair">Fair</span></td>
+        <td><span class="rating poor">Poor</span></td>
+        <td><span class="rating poor">Poor</span></td>
+        <td><span class="rating poor">Poor</span></td>
+        <td>Products defined but not differentiated from each other. No return projections, no deal listings, no documentation links.</td>
+        <td><span class="rating poor">Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>FAQ Section</strong></td>
+        <td><span class="rating good">Good</span></td>
+        <td><span class="rating fair">Fair</span></td>
+        <td><span class="rating fair">Fair</span></td>
+        <td><span class="rating fair">Fair</span></td>
+        <td>Good starting point. Missing emotional objections. Answers are mechanical, not empathetic. Needs expansion for each product.</td>
+        <td><span class="rating fair">Medium</span></td>
+      </tr>
+      <tr>
+        <td><strong>About / Company Section</strong></td>
+        <td><span class="rating missing">Missing</span></td>
+        <td><span class="rating missing">Missing</span></td>
+        <td><span class="rating missing">Missing</span></td>
+        <td><span class="rating missing">Missing</span></td>
+        <td>No dedicated About page identified. No team, no founding story, no mission statement, no regulatory disclosure.</td>
+        <td><span class="rating poor">Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>Social Proof / Testimonials</strong></td>
+        <td><span class="rating missing">Missing</span></td>
+        <td><span class="rating missing">Missing</span></td>
+        <td><span class="rating missing">Missing</span></td>
+        <td><span class="rating missing">Missing</span></td>
+        <td>Entirely absent. No quotes, no case studies, no platform metrics. Biggest single conversion barrier.</td>
+        <td><span class="rating poor">Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>CTA Architecture</strong></td>
+        <td><span class="rating poor">Poor</span></td>
+        <td><span class="rating poor">Poor</span></td>
+        <td><span class="rating poor">Poor</span></td>
+        <td><span class="rating missing">N/A</span></td>
+        <td>Single generic CTA path. No product-specific or audience-specific calls to action. No low-commitment engagement options (calculator, guide, waitlist).</td>
+        <td><span class="rating poor">Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>Blog / Educational Content</strong></td>
+        <td><span class="rating missing">Missing</span></td>
+        <td><span class="rating missing">Missing</span></td>
+        <td><span class="rating missing">Missing</span></td>
+        <td><span class="rating missing">Missing</span></td>
+        <td>No blog section detected. This eliminates all organic search opportunity beyond brand name queries.</td>
+        <td><span class="rating poor">Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>Footer / Legal</strong></td>
+        <td><span class="rating fair">Fair</span></td>
+        <td><span class="rating fair">Fair</span></td>
+        <td><span class="rating poor">Poor</span></td>
+        <td><span class="rating fair">Fair</span></td>
+        <td>Footer exists. Legal links need to be more prominent for a financial product. No footer CTA, no contact email prominently placed.</td>
+        <td><span class="rating fair">Medium</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════════════════════════ SECTION 9 ═════════ -->
+<section class="section" id="seo">
+  <div class="section-eyebrow"><span class="num">09</span><span class="tag">SEO Analysis</span></div>
+  <h2 class="section-title">Organic Search: An Almost Untouched Opportunity</h2>
+  <p class="section-sub">Based on an external content audit of midrar.sa, the SEO performance indicators suggest the site is capturing only a small fraction of available organic search intent in the Saudi proptech and real estate finance space.</p>
+
+  <div class="seo-grid">
+    <div class="seo-card">
+      <h4>Estimated Keyword Coverage</h4>
+      <div class="seo-val">~Low</div>
+      <div class="seo-note">No blog or long-form content detected. Brand name is the primary ranking surface.</div>
+    </div>
+    <div class="seo-card">
+      <h4>On-Page Optimization</h4>
+      <div class="seo-val">Partial</div>
+      <div class="seo-note">Product names present on page but unclear if H1/H2 hierarchy is keyword-optimized.</div>
+    </div>
+    <div class="seo-card">
+      <h4>Content Volume for SEO</h4>
+      <div class="seo-val">Critical Gap</div>
+      <div class="seo-note">Single-page / minimal content structure offers almost no crawlable indexed surface.</div>
+    </div>
+    <div class="seo-card">
+      <h4>Backlink Profile</h4>
+      <div class="seo-val">Unknown</div>
+      <div class="seo-note">No press coverage or educational content to attract organic backlinks detected.</div>
+    </div>
+    <div class="seo-card">
+      <h4>Schema / Structured Data</h4>
+      <div class="seo-val">Likely None</div>
+      <div class="seo-note">No FAQ schema, product schema, or organization schema detected from external audit.</div>
+    </div>
+    <div class="seo-card">
+      <h4>Mobile SEO Readiness</h4>
+      <div class="seo-val">Assumed OK</div>
+      <div class="seo-note">Arabic RTL sites typically require careful mobile optimization. No specific issues detected externally.</div>
+    </div>
+  </div>
+
+  <h3 class="sub-heading">High-Value Keyword Opportunities (Arabic + English)</h3>
+  <table class="keyword-table">
+    <thead>
+      <tr>
+        <th>Keyword</th>
+        <th>Language</th>
+        <th>Est. Volume</th>
+        <th>Competition</th>
+        <th>Midrar Fit</th>
+        <th>Content Type Needed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>التملك الجزئي في السعودية</td>
+        <td>Arabic</td>
+        <td><span class="vol-bar" style="width:60px"></span>High</td>
+        <td>Medium</td>
+        <td>Direct</td>
+        <td>Explainer article / landing page</td>
+      </tr>
+      <tr>
+        <td>حق الانتفاع في العقار</td>
+        <td>Arabic</td>
+        <td><span class="vol-bar" style="width:48px"></span>High</td>
+        <td>Low–Medium</td>
+        <td>Direct</td>
+        <td>Educational guide + FAQ schema</td>
+      </tr>
+      <tr>
+        <td>تقسيط الإيجار السنوي</td>
+        <td>Arabic</td>
+        <td><span class="vol-bar" style="width:52px"></span>High</td>
+        <td>Low</td>
+        <td>Direct</td>
+        <td>Tenant landing page</td>
+      </tr>
+      <tr>
+        <td>استلام الإيجار مقدم</td>
+        <td>Arabic</td>
+        <td><span class="vol-bar" style="width:40px"></span>Medium</td>
+        <td>Low</td>
+        <td>Direct</td>
+        <td>Landlord landing page</td>
+      </tr>
+      <tr>
+        <td>فرص استثمار عقاري صغير السعودية</td>
+        <td>Arabic</td>
+        <td><span class="vol-bar" style="width:44px"></span>Medium</td>
+        <td>Low–Medium</td>
+        <td>Direct</td>
+        <td>Investor guide article</td>
+      </tr>
+      <tr>
+        <td>fractional real estate Saudi Arabia</td>
+        <td>English</td>
+        <td><span class="vol-bar" style="width:36px"></span>Medium</td>
+        <td>Low</td>
+        <td>Direct</td>
+        <td>English landing page for investors</td>
+      </tr>
+      <tr>
+        <td>proptech Saudi Arabia rental finance</td>
+        <td>English</td>
+        <td><span class="vol-bar" style="width:28px"></span>Low–Med</td>
+        <td>Low</td>
+        <td>Strong</td>
+        <td>Press/company overview page</td>
+      </tr>
+      <tr>
+        <td>رؤية 2030 استثمار عقاري</td>
+        <td>Arabic</td>
+        <td><span class="vol-bar" style="width:56px"></span>High</td>
+        <td>Medium</td>
+        <td>Thematic</td>
+        <td>Blog: How Vision 2030 opens real estate for individuals</td>
+      </tr>
+      <tr>
+        <td>usufruct rights Saudi Arabia investing</td>
+        <td>English</td>
+        <td><span class="vol-bar" style="width:24px"></span>Low</td>
+        <td>Very Low</td>
+        <td>Direct</td>
+        <td>English explainer — near-zero competition</td>
+      </tr>
+      <tr>
+        <td>الفرق بين التملك الجزئي وحق الانتفاع</td>
+        <td>Arabic</td>
+        <td><span class="vol-bar" style="width:32px"></span>Medium</td>
+        <td>Very Low</td>
+        <td>Direct</td>
+        <td>Comparison article — own this query entirely</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="sub-heading">On-Page SEO Issues to Address</h3>
+  <ul class="bullet-list">
+    <li><strong>Heading Hierarchy (H1/H2/H3):</strong> A single-page site or minimal structure often uses visual headings that are not semantically tagged as H1–H3. Search engines rely on this structure to understand page content. Each product section should have a keyword-relevant H2.</li>
+    <li><strong>Meta Descriptions:</strong> Without visibility into the site's HTML, it is highly likely that meta descriptions are generic or auto-generated. Each page should have a unique, compelling meta description under 155 characters that includes a target keyword.</li>
+    <li><strong>FAQ Schema Markup:</strong> The existing FAQ section is valuable but likely not marked up with structured data (schema.org/FAQPage). Adding this enables rich result snippets in Google — directly increasing click-through rates without any ranking change.</li>
+    <li><strong>Image Alt Text:</strong> Any images or icons on the site should have descriptive alt text including relevant Arabic or English keywords — both for SEO and accessibility compliance.</li>
+    <li><strong>Internal Linking:</strong> A single-page or low-content site has no internal linking structure to distribute authority. As content is added (blog, landing pages), a deliberate internal linking strategy is critical.</li>
+    <li><strong>Page Speed and Core Web Vitals:</strong> Arabic RTL sites with animations or heavy assets can struggle with LCP (Largest Contentful Paint) metrics. A technical audit is recommended to ensure the site meets Google's Core Web Vitals thresholds.</li>
+    <li><strong>Canonical Tags and Bilingual Hreflang:</strong> If Midrar has or plans an English version of the site, proper hreflang tags must be implemented to prevent duplicate content penalties and ensure the right language version ranks for the right audience.</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════════════════════════ SECTION 10 ════════ -->
+<section class="section section-alt" id="trust">
+  <div class="section-eyebrow"><span class="num">10</span><span class="tag">Trust & Credibility Signals</span></div>
+  <h2 class="section-title">The Trust Gap: Why Visitors Don't Convert</h2>
+  <p class="section-sub">In financial services — and especially in Islamic finance real estate products — trust is not a nice-to-have. It is the product. This analysis scores Midrar across the nine trust signals most critical for its audience.</p>
+
+  <div class="trust-grid">
+    <div class="trust-card">
+      <div class="t-icon">📋</div>
+      <h4>Regulatory Disclosure</h4>
+      <p>Is REGA sandbox status, SAMA licensing, or any regulatory approval explicitly stated and linked on the website?</p>
+      <span class="trust-status missing">Missing</span>
+    </div>
+    <div class="trust-card">
+      <div class="t-icon">☪️</div>
+      <h4>Shariah Compliance Documentation</h4>
+      <p>Is there a named Shariah committee, a fatwa reference, or downloadable committee decision? Competitors publish full PDFs with scholar names.</p>
+      <span class="trust-status partial">Partial — Mentioned, not documented</span>
+    </div>
+    <div class="trust-card">
+      <div class="t-icon">👥</div>
+      <h4>Team & Founders Visibility</h4>
+      <p>Are the founders, leadership team, and key personnel identified with photos, bios, and LinkedIn profiles?</p>
+      <span class="trust-status missing">Missing</span>
+    </div>
+    <div class="trust-card">
+      <div class="t-icon">💬</div>
+      <h4>Customer Testimonials</h4>
+      <p>Are there verified testimonials from landlords, tenants, or investors — with names, roles, and specific outcomes?</p>
+      <span class="trust-status missing">Missing</span>
+    </div>
+    <div class="trust-card">
+      <div class="t-icon">📊</div>
+      <h4>Platform Performance Metrics</h4>
+      <p>Are there publicly visible stats — total rent processed, number of landlords, deal value, investor count, return history?</p>
+      <span class="trust-status missing">Missing</span>
+    </div>
+    <div class="trust-card">
+      <div class="t-icon">🤝</div>
+      <h4>Partner & Investor Logos</h4>
+      <p>Are recognized partners, investors, or institutional clients displayed to signal credibility by association?</p>
+      <span class="trust-status missing">Missing</span>
+    </div>
+    <div class="trust-card">
+      <div class="t-icon">🔒</div>
+      <h4>Security & Data Privacy</h4>
+      <p>Is there visible SSL, a privacy policy, and a data protection statement appropriate for a fintech handling financial transactions?</p>
+      <span class="trust-status partial">Partial — Legal links likely exist</span>
+    </div>
+    <div class="trust-card">
+      <div class="t-icon">📰</div>
+      <h4>Press & Media Coverage</h4>
+      <p>Is there a "As seen in" section or a press page featuring coverage in Arab Business, Arab News, or sector media?</p>
+      <span class="trust-status missing">Missing</span>
+    </div>
+    <div class="trust-card">
+      <div class="t-icon">📞</div>
+      <h4>Accessible Human Contact</h4>
+      <p>Is there a visible phone number, WhatsApp button, or live chat that signals a real team behind the platform?</p>
+      <span class="trust-status partial">Partial — Contact form exists</span>
+    </div>
+  </div>
+
+  <div class="note-block" style="margin-top:28px">
+    <p><strong>Trust Score: 3.9 / 10.</strong> This is the lowest-scored category in the analysis, and it directly explains why even visitors with high intent do not convert. For a platform asking users to hand over annual rent amounts or invest in real estate, the current level of credibility signaling is insufficient. The fix does not require a redesign — it requires a deliberate trust-content program: publish the Shariah documents, add a team page, show platform metrics, collect and display testimonials. These are content decisions, not technology decisions.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ SECTION 11 ════════ -->
+<section class="section" id="quickwins">
+  <div class="section-eyebrow"><span class="num">11</span><span class="tag">Quick Win Recommendations</span></div>
+  <h2 class="section-title">30-Day Content Actions That Move the Needle</h2>
+  <p class="section-sub">These are high-impact, low-effort content changes that can be implemented within 30 days without a full redesign. Each addresses a specific conversion or trust gap identified in this analysis.</p>
+
+  <ul class="recs-list">
+    <li class="rec-item">
+      <div class="rec-num">01</div>
+      <div class="rec-content">
+        <h4>Rewrite the Hero Headline into Three Audience-Specific Versions</h4>
+        <p>Create a headline that either segments by audience (landlord / tenant / investor) through a tab or toggle mechanism, or selects the primary audience and leads with a specific, outcome-driven promise. Example: "Collect your full year's rent — today." This single change will improve engagement metrics visibly within 14 days of A/B testing.</p>
+        <div class="rec-meta">
+          <span class="rec-tag effort-low">Low Effort</span>
+          <span class="rec-tag impact-high">High Impact</span>
+        </div>
+      </div>
+    </li>
+    <li class="rec-item">
+      <div class="rec-num">02</div>
+      <div class="rec-content">
+        <h4>Publish Shariah Compliance Documentation</h4>
+        <p>Upload the Shariah committee decision documents as downloadable PDFs, with the committee name, scholar names, and decision reference numbers visible on the page. Link to these from every product section. This single addition addresses the single most common objection from Saudi users evaluating a financial product.</p>
+        <div class="rec-meta">
+          <span class="rec-tag effort-low">Low Effort</span>
+          <span class="rec-tag impact-high">High Impact</span>
+        </div>
+      </div>
+    </li>
+    <li class="rec-item">
+      <div class="rec-num">03</div>
+      <div class="rec-content">
+        <h4>Add a Platform Metrics Bar (Social Proof Numbers)</h4>
+        <p>Place a simple metrics strip — "SAR X processed in rent | X landlords served | X investors onboarded" — in the hero section or just below it. Even conservative early-stage numbers dramatically increase perceived credibility. If actual numbers are not available for public display, use a softer formulation: "Trusted by landlords across Riyadh, Jeddah, and Dammam."</p>
+        <div class="rec-meta">
+          <span class="rec-tag effort-low">Low Effort</span>
+          <span class="rec-tag impact-high">High Impact</span>
+        </div>
+      </div>
+    </li>
+    <li class="rec-item">
+      <div class="rec-num">04</div>
+      <div class="rec-content">
+        <h4>Create Audience-Specific CTAs per Product Section</h4>
+        <p>Replace all generic "Contact us" CTAs with context-specific calls to action: Landlords → "Get my advance rent offer," Tenants → "Split my rent into monthly payments," Investors → "Browse available properties." Each CTA should link to a short intake form that captures the lead's product interest, not a general contact page.</p>
+        <div class="rec-meta">
+          <span class="rec-tag effort-low">Low Effort</span>
+          <span class="rec-tag impact-high">High Impact</span>
+        </div>
+      </div>
+    </li>
+    <li class="rec-item">
+      <div class="rec-num">05</div>
+      <div class="rec-content">
+        <h4>Add FAQ Schema Markup to the Existing FAQ Section</h4>
+        <p>The FAQ section already exists — it just needs structured data markup (schema.org/FAQPage) applied to it. This requires minimal development time and enables rich result snippets in Google search — increasing click-through rates without any ranking improvement. It is one of the highest ROI technical content moves available.</p>
+        <div class="rec-meta">
+          <span class="rec-tag effort-low">Low Effort</span>
+          <span class="rec-tag impact-high">High Impact</span>
+        </div>
+      </div>
+    </li>
+    <li class="rec-item">
+      <div class="rec-num">06</div>
+      <div class="rec-content">
+        <h4>Create a "How It Works" Visual Process for Each Product</h4>
+        <p>Design a simple 3–4 step visual for each product: Landlord process, Tenant process, Investor process. These should show the user's experience — not Midrar's operations — in plain language and visual icons. This single addition reduces cognitive load and FAQ queries simultaneously, and is one of the highest-converting content formats for financial products.</p>
+        <div class="rec-meta">
+          <span class="rec-tag effort-med">Medium Effort</span>
+          <span class="rec-tag impact-high">High Impact</span>
+        </div>
+      </div>
+    </li>
+    <li class="rec-item">
+      <div class="rec-num">07</div>
+      <div class="rec-content">
+        <h4>Expand the FAQ with Emotional Objection Answers</h4>
+        <p>Add a minimum of 10 new FAQ entries addressing the real objections that prevent conversion — "Will my tenant pay more because of Midrar?", "What happens if Midrar shuts down?", "Is my investment protected if property values fall?", "What fees does Midrar charge and when?" These questions are currently being answered by competitors, not Midrar.</p>
+        <div class="rec-meta">
+          <span class="rec-tag effort-low">Low Effort</span>
+          <span class="rec-tag impact-high">High Impact</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════════════════════════ SECTION 12 ════════ -->
+<section class="section section-alt" id="strategic">
+  <div class="section-eyebrow"><span class="num">12</span><span class="tag">Strategic Recommendations</span></div>
+  <h2 class="section-title">3–6 Month Content Strategy Moves</h2>
+  <p class="section-sub">These are structural content investments that build long-term organic authority, deepen audience trust, and create a content ecosystem that works as a compounding asset rather than a static brochure.</p>
+
+  <ul class="recs-list">
+    <li class="rec-item">
+      <div class="rec-num">S1</div>
+      <div class="rec-content">
+        <h4>Build Dedicated Landing Pages per Audience and Product</h4>
+        <p>Create four separate landing pages: one for landlords (rent advance), one for tenants (installment rent), one for fractional ownership investors, and one for usufruct investors. Each page should have its own hero, its own FAQ, its own CTA, and its own social proof format. This architecture enables personalized paid campaigns, proper SEO targeting, and dramatically improved conversion rates vs. a single homepage.</p>
+        <div class="rec-meta">
+          <span class="rec-tag effort-med">Medium Effort</span>
+          <span class="rec-tag impact-high">High Impact</span>
+        </div>
+      </div>
+    </li>
+    <li class="rec-item">
+      <div class="rec-num">S2</div>
+      <div class="rec-content">
+        <h4>Launch an Arabic-First Education Blog (Proptech & Real Estate Finance)</h4>
+        <p>Launch a blog with a minimum of 2 articles per month covering high-intent educational queries: "Fractional ownership vs. usufruct: which is right for you?", "How to invest in Saudi real estate with SAR 5,000," "Your rights as a tenant under Saudi law." This content builds authority, captures organic search, and generates backlinks from finance and property media. No competitor in this space is publishing Arabic proptech educational content at any meaningful scale — the opportunity to own this space is available right now.</p>
+        <div class="rec-meta">
+          <span class="rec-tag effort-med">Medium Effort</span>
+          <span class="rec-tag impact-high">High Impact</span>
+        </div>
+      </div>
+    </li>
+    <li class="rec-item">
+      <div class="rec-num">S3</div>
+      <div class="rec-content">
+        <h4>Develop a Rent Calculator as a Lead Generation Tool</h4>
+        <p>Build an interactive calculator on the website: landlords input their annual rent amount and see how much they would receive upfront through Midrar; tenants input their annual rent and see what their monthly payment would be; investors input an amount and see projected annual returns. Calculators are among the highest-converting lead capture tools in fintech — they provide immediate value, collect product-specific intent data, and significantly increase time-on-site and return visits.</p>
+        <div class="rec-meta">
+          <span class="rec-tag effort-med">Medium Effort</span>
+          <span class="rec-tag impact-high">High Impact</span>
+        </div>
+      </div>
+    </li>
+    <li class="rec-item">
+      <div class="rec-num">S4</div>
+      <div class="rec-content">
+        <h4>Create an About / Team Page with Full Transparency</h4>
+        <p>Build a full About page including: founding story and mission, team photos and bios with LinkedIn links, regulatory status and licensing information, Shariah compliance committee details, company registration information. For a financial product, this page is not a vanity exercise — it is a conversion asset. People invest in people before they invest in products.</p>
+        <div class="rec-meta">
+          <span class="rec-tag effort-low">Low Effort</span>
+          <span class="rec-tag impact-high">High Impact</span>
+        </div>
+      </div>
+    </li>
+    <li class="rec-item">
+      <div class="rec-num">S5</div>
+      <div class="rec-content">
+        <h4>Build a Case Study / Deal Showcase Library</h4>
+        <p>Document 3–5 completed deals or customer stories — one landlord story, one tenant story, one fractional investor story. Each case study should follow a structure: situation, problem, solution, specific outcome (in SAR if possible). This content format drives the highest purchase intent of any format in financial services and almost no proptech platform in Saudi Arabia is doing this at any quality level. Even anonymized stories with pseudonyms are significantly more effective than no social proof.</p>
+        <div class="rec-meta">
+          <span class="rec-tag effort-med">Medium Effort</span>
+          <span class="rec-tag impact-high">High Impact</span>
+        </div>
+      </div>
+    </li>
+    <li class="rec-item">
+      <div class="rec-num">S6</div>
+      <div class="rec-content">
+        <h4>Develop a Bilingual Content Strategy (Arabic + English)</h4>
+        <p>Build a structured approach to bilingual content: Arabic as the primary audience-facing language for landlords, tenants, and Saudi retail investors; English as the secondary language for institutional partners, GCC expat investors, and international media. This does not require translating every page — it requires a deliberate decision about which pages matter in English and building those pages properly, rather than having a half-built English version that undermines brand credibility.</p>
+        <div class="rec-meta">
+          <span class="rec-tag effort-high">Higher Effort</span>
+          <span class="rec-tag impact-high">High Impact</span>
+        </div>
+      </div>
+    </li>
+    <li class="rec-item">
+      <div class="rec-num">S7</div>
+      <div class="rec-content">
+        <h4>Establish a Press / Media Page and Start Seeking Coverage</h4>
+        <p>Create a press page with the company logo in high resolution, key facts, executive headshots, and a press contact. Actively pitch to Arab Business, Al Arabiya, Mubasher, and English-language fintech media. Each piece of press coverage creates a backlink, a trust signal, and a potential investor/partner referral. The "As seen in" logos on a homepage are worth more in conversion uplift than almost any other single trust element.</p>
+        <div class="rec-meta">
+          <span class="rec-tag effort-med">Medium Effort</span>
+          <span class="rec-tag impact-high">High Impact</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════════════════════════ SECTION 13 ════════ -->
+<section class="section" id="competitive">
+  <div class="section-eyebrow"><span class="num">13</span><span class="tag">Competitive Content Benchmarking</span></div>
+  <h2 class="section-title">Where Midrar Stands Against Its Competitors</h2>
+  <p class="section-sub">A structured comparison of content quality and strategic positioning across Midrar and the three closest competitors in the Saudi proptech investment space.</p>
+
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th style="width:16%">Criteria</th>
+        <th style="width:21%">Midrar</th>
+        <th style="width:21%">Ghanem</th>
+        <th style="width:21%">Jozo</th>
+        <th style="width:21%">Mdak</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Value Proposition Clarity</td>
+        <td class="midrar-row">Vague — product-centric rather than outcome-centric</td>
+        <td>Strong — "Own a registered share in income property"</td>
+        <td>Good — "First tokenization platform in KSA"</td>
+        <td>Strong — "Own a share from SAR 500"</td>
+      </tr>
+      <tr>
+        <td>Audience Segmentation</td>
+        <td class="midrar-row">None — all personas on one page</td>
+        <td>Investor-focused only — clear and consistent</td>
+        <td>Investor + developer — reasonably segmented</td>
+        <td>Retail investor — one audience, very focused</td>
+      </tr>
+      <tr>
+        <td>Trust Content</td>
+        <td class="midrar-row">Minimal — Shariah mentioned, not proven</td>
+        <td>Excellent — full Shariah committee PDFs, REGA sandbox stated</td>
+        <td>Good — seed funding news, regulatory mentions prominent</td>
+        <td>Medium — app ratings, monthly distributions mentioned</td>
+      </tr>
+      <tr>
+        <td>Social Proof</td>
+        <td class="midrar-row">None</td>
+        <td>Moderate — regulatory logos and sandbox status</td>
+        <td>Good — funding round, investor name disclosed</td>
+        <td>Moderate — app store presence, distribution history</td>
+      </tr>
+      <tr>
+        <td>SEO Content Volume</td>
+        <td class="midrar-row">Very Low — minimal indexed content</td>
+        <td>Low — primarily homepage-driven</td>
+        <td>Low — early stage</td>
+        <td>Medium — app presence generates some content signals</td>
+      </tr>
+      <tr>
+        <td>CTA Quality</td>
+        <td class="midrar-row">Poor — generic contact form</td>
+        <td>Good — "Register interest" with product specificity</td>
+        <td>Medium — "Get started" with clear next step</td>
+        <td>High — app download CTA, very specific</td>
+      </tr>
+      <tr>
+        <td>Bilingual Capability</td>
+        <td class="midrar-row">Partial — Arabic primary, English unclear</td>
+        <td>Good — full English version available</td>
+        <td>Good — Arabic/English both functional</td>
+        <td>Arabic-first — less English investment</td>
+      </tr>
+      <tr>
+        <td>Unique Positioning</td>
+        <td class="midrar-row">Widest product range (rental + investment) but unfocused messaging</td>
+        <td>Regulatory pioneer — REGA sandbox first mover</td>
+        <td>Tokenization innovation — "first" claim in market</td>
+        <td>Lowest entry barrier — SAR 500 minimum</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout" style="margin-top:28px">
+    <p><strong>Key Strategic Insight:</strong> Midrar's actual product breadth — the only platform serving landlords, tenants, AND investors — is its strongest differentiator. But this advantage is invisible on the current website. The content benchmark reveals that every competitor has defined a narrow, focused position and communicated it clearly. Midrar needs to either segment this breadth into clear pathways, or choose the primary audience and lead with that message while making the others discoverable. Trying to lead with all three simultaneously is the root cause of the messaging weakness identified throughout this analysis.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ SECTION 14 ════════ -->
+<section class="section section-alt" id="matrix">
+  <div class="section-eyebrow"><span class="num">14</span><span class="tag">Priority Action Matrix</span></div>
+  <h2 class="section-title">Where to Start: Impact vs. Effort</h2>
+  <p class="section-sub">This matrix maps all recommended actions across two dimensions — implementation effort and conversion/business impact — to guide prioritization of the content roadmap.</p>
+
+  <div class="matrix-outer">
+    <div class="matrix-axis-y">← LOW EFFORT · HIGH EFFORT →</div>
+    <div class="matrix-grid">
+      <div class="matrix-cell">
+        <div class="matrix-cell-label">↑ High Impact / Low Effort — DO FIRST</div>
+        <span class="matrix-dot">Shariah docs</span>
+        <span class="matrix-dot">Rewrite hero headline</span>
+        <span class="matrix-dot">Audience CTAs</span>
+        <span class="matrix-dot">FAQ schema markup</span>
+        <span class="matrix-dot">Expand FAQ</span>
+        <span class="matrix-dot">About / Team page</span>
+        <span class="matrix-dot">Platform metrics bar</span>
+      </div>
+      <div class="matrix-cell">
+        <div class="matrix-cell-label">↑ High Impact / High Effort — PLAN & EXECUTE</div>
+        <span class="matrix-dot">Dedicated landing pages</span>
+        <span class="matrix-dot">Education blog</span>
+        <span class="matrix-dot">Case studies library</span>
+        <span class="matrix-dot">Rent calculator tool</span>
+        <span class="matrix-dot">Bilingual strategy</span>
+        <span class="matrix-dot">Press / media page</span>
+      </div>
+      <div class="matrix-cell">
+        <div class="matrix-cell-label">↓ Low Impact / Low Effort — FILL GAPS</div>
+        <span class="matrix-dot">"How it works" visuals</span>
+        <span class="matrix-dot">Footer CTA</span>
+        <span class="matrix-dot">Image alt texts</span>
+        <span class="matrix-dot">Meta descriptions</span>
+        <span class="matrix-dot">Contact info visibility</span>
+      </div>
+      <div class="matrix-cell">
+        <div class="matrix-cell-label">↓ Low Impact / High Effort — DEFER</div>
+        <span class="matrix-dot">Full rebrand</span>
+        <span class="matrix-dot">App redesign</span>
+        <span class="matrix-dot">Video production</span>
+        <span class="matrix-dot">Influencer program</span>
+      </div>
+    </div>
+    <div class="matrix-axis-x"><span class="arrow">←</span> LOW EFFORT <span style="flex:1;text-align:center;color:var(--midrar-border)">────────────────</span> HIGH EFFORT <span class="arrow">→</span></div>
+  </div>
+
+  <h3 class="sub-heading" style="margin-top:40px">30-60-90 Day Content Roadmap</h3>
+  <table class="action-table">
+    <thead>
+      <tr>
+        <th>Timeline</th>
+        <th>Action</th>
+        <th>Owner</th>
+        <th>Expected Outcome</th>
+        <th>Priority</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Day 1–30</strong></td>
+        <td>Rewrite hero headline (3 audience variants)</td>
+        <td>Content Lead</td>
+        <td>Improved engagement rate, lower bounce</td>
+        <td><span class="pri-badge p1">P1 Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>Day 1–30</strong></td>
+        <td>Publish Shariah committee documentation</td>
+        <td>Legal + Content</td>
+        <td>Trust signal, objection removal at decision stage</td>
+        <td><span class="pri-badge p1">P1 Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>Day 1–30</strong></td>
+        <td>Add platform metrics social proof bar</td>
+        <td>Content + Dev</td>
+        <td>Perceived credibility increase, conversion uplift</td>
+        <td><span class="pri-badge p1">P1 Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>Day 1–30</strong></td>
+        <td>Replace all CTAs with audience-specific versions</td>
+        <td>Content + Dev</td>
+        <td>Better lead qualification, higher conversion rate</td>
+        <td><span class="pri-badge p1">P1 Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>Day 1–30</strong></td>
+        <td>Add FAQ schema markup</td>
+        <td>Developer</td>
+        <td>Rich snippets in Google, higher CTR from search</td>
+        <td><span class="pri-badge p1">P1 Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>Day 30–60</strong></td>
+        <td>Build About / Team page</td>
+        <td>Content + Design</td>
+        <td>Trust at research stage, institutional appeal</td>
+        <td><span class="pri-badge p1">P1 Critical</span></td>
+      </tr>
+      <tr>
+        <td><strong>Day 30–60</strong></td>
+        <td>Create "How It Works" 3-step visual per product</td>
+        <td>Design + Content</td>
+        <td>Reduced FAQ load, increased comprehension, lower drop-off</td>
+        <td><span class="pri-badge p2">P2 High</span></td>
+      </tr>
+      <tr>
+        <td><strong>Day 30–60</strong></td>
+        <td>Expand FAQ with 10 emotional objection answers</td>
+        <td>Content Lead</td>
+        <td>Conversion at evaluation stage, reduced support queries</td>
+        <td><span class="pri-badge p2">P2 High</span></td>
+      </tr>
+      <tr>
+        <td><strong>Day 30–60</strong></td>
+        <td>Build 3 customer case studies (landlord, tenant, investor)</td>
+        <td>Content + Ops</td>
+        <td>Highest-converting trust format in financial services</td>
+        <td><span class="pri-badge p2">P2 High</span></td>
+      </tr>
+      <tr>
+        <td><strong>Day 60–90</strong></td>
+        <td>Launch education blog — 2 articles / month cadence</td>
+        <td>Content Strategy</td>
+        <td>Organic search growth, authority building, lead gen</td>
+        <td><span class="pri-badge p2">P2 High</span></td>
+      </tr>
+      <tr>
+        <td><strong>Day 60–90</strong></td>
+        <td>Build dedicated landing pages per audience</td>
+        <td>Content + Dev + Design</td>
+        <td>Paid campaign readiness, SEO targeting, conversion per segment</td>
+        <td><span class="pri-badge p2">P2 High</span></td>
+      </tr>
+      <tr>
+        <td><strong>Day 60–90</strong></td>
+        <td>Develop interactive rent / investment calculator</td>
+        <td>Product + Content + Dev</td>
+        <td>Lead capture, time-on-site, product education</td>
+        <td><span class="pri-badge p2">P2 High</span></td>
+      </tr>
+      <tr>
+        <td><strong>90+ Days</strong></td>
+        <td>Launch bilingual content strategy (key pages in English)</td>
+        <td>Content Strategy</td>
+        <td>Institutional appeal, GCC investor access, PR coverage</td>
+        <td><span class="pri-badge p3">P3 Medium</span></td>
+      </tr>
+      <tr>
+        <td><strong>90+ Days</strong></td>
+        <td>Establish press page and pursue media coverage</td>
+        <td>Marketing + Content</td>
+        <td>Backlinks, "as seen in" trust logos, investor visibility</td>
+        <td><span class="pri-badge p3">P3 Medium</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout" style="margin-top:32px">
+    <p><strong>Final Assessment:</strong> Midrar has one of the most complete product propositions in Saudi proptech — addressing landlords, tenants, and investors in a single platform with Shariah-compliant structures. The business case is strong. The content strategy, however, is at an early stage that does not yet match the product's ambition. The gap between Midrar's potential and its current digital presence is primarily a content and messaging gap — and it is entirely closeable. The recommendations in this report provide a structured path from where the site is today to where it needs to be to compete for high-intent, high-value users in the Kingdom's rapidly maturing proptech market.</p>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="report-footer">
+  <div>
+    <div class="brand">مدرار · Midrar</div>
+    <div class="meta" style="margin-top:4px">Content Analysis Report · May 2026</div>
+  </div>
+  <div class="disclaimer">This report is based on an external content audit of publicly accessible website content and market research. It does not reflect internal analytics, conversion data, or financial performance.</div>
+  <div class="meta">Methodology: External Web Audit<br>Sources: midrar.sa, market research, competitive analysis</div>
+</footer>
+
+</main>
+
+<script>
+  // Active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.sidenav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+
+</body>
+</html>
